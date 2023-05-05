@@ -28,6 +28,6 @@ function onImg(e) {
    return
   };
   
-  var lightbox = new SimpleLightBox('.gallery__link', { captionDelay: "250", captionsData: "alt"});
+  const lightbox = new SimpleLightbox('.gallery__link', { captionDelay: "250", captionsData: "alt"});
 }
 console.log(galleryItems);

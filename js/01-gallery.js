@@ -29,10 +29,8 @@ function onImg(e) {
   };
   
   const instance = basicLightbox.create(`
-    <div class="modal">
         <img src = "${e.target.dataset.source}">
-    </div>
-`);
+`)
 
 instance.show()
 }
