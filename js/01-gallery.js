@@ -3,7 +3,7 @@ import { galleryItems } from './gallery-items.js';
 const galleryItem = document.querySelector(".gallery");
 
 const liPhoto = galleryItems.map((galleryItem) => `<li class="gallery__item">
-  <a class="gallery__link" href="${galleryItem.preview}">
+  <a class="gallery__link" href="${galleryItem.original}">
     <img
       class="gallery__image"
       src="${galleryItem.preview}"
@@ -11,10 +11,9 @@ const liPhoto = galleryItems.map((galleryItem) => `<li class="gallery__item">
       alt="${galleryItem.description}"
     />
   </a>
-</li>`);
-const photoString = liPhoto.join("");
+</li>`).join("");
 
-galleryItem.insertAdjacentHTML("afterbegin", photoString);
+galleryItem.insertAdjacentHTML("afterbegin", liPhoto);
 
 
 // console.log(galleryItems);
@@ -24,15 +23,16 @@ galleryItem.addEventListener("click", onImg);
 function onImg(e) {
   e.preventDefault();
 
-  if (e.currentTarget === galleryItem) {
-  console.log(e.currentTarget)
-  } else { return };
-
+  const isGalleryImage = e.target.classList.contains("gallery__image");
+ if (!isGalleryImage ) {
+   return
+  };
+  
   const instance = basicLightbox.create(`
     <div class="modal">
-        <img src = "${e.target.dataset.source}" width="800" height="600">
+        <img src = "${e.target.dataset.source}">
     </div>
-`)
+`);
 
 instance.show()
 }
