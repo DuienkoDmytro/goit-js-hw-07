@@ -15,24 +15,7 @@ const liPhoto = galleryItems.map((galleryItem) => `<li class="gallery__item">
 
 galleryItem.insertAdjacentHTML("afterbegin", liPhoto);
 
-
-// console.log(galleryItems);
-
-galleryItem.addEventListener("click", onImg);
-
-function onImg(e) {
-  e.preventDefault();
-
-  const isGalleryImage = e.target.classList.contains("gallery__image");
- if (!isGalleryImage ) {
-   return
-  };
-  
   const instance = basicLightbox.create(`
         <img src = "${e.target.dataset.source}">
 `)
-
-instance.show()
-}
-
 
